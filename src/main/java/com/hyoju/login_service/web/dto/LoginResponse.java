@@ -1,4 +1,13 @@
 package com.hyoju.login_service.web.dto;
 
-public class LoginResponse { // 데이터 응답 객체
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class LoginResponse {
+
+    private String accessToken;
+    private String tokenType;
+
 }

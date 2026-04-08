@@ -11,8 +11,4 @@ public interface MemberRepository extends JpaRepository<Member,Long> {
     // 회원 아이디로 조회 (로그인 할 때)
     Optional<Member> findByLoginId(String id);
 
-
-
-    // JPA 는 인터페이스만 있으면 알아서 구현체(Proxy) 를 만들어줌
-
 }

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class Member {
 
     // 클라이언트에게 받는 정보
+    private String name;
     private String loginId;
     private String password;
-    private String name;
 
     // DB 의 PK값
     @Id
