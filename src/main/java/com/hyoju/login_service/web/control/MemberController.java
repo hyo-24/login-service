@@ -7,11 +7,12 @@ import com.hyoju.login_service.web.dto.LoginResponse;
 import com.hyoju.login_service.web.dto.MemberJoinRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+@Transactional
 @RestController // JSON 방식은 이 애노테이션으로 컨트롤러 등록
 @RequiredArgsConstructor
 public class MemberController {
