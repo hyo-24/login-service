@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -41,9 +42,9 @@ public class MemberServiceTest {
     @Test
     void 로그인_성공() {
         // given
-        Member member = new Member("kim", "3783", "2f83");
+        Member member = new Member("kim", "3783", "2f83","USER");
         BDDMockito.given(repository.findByLoginId("3783")).willReturn(Optional.of(member));
-        BDDMockito.given(jwtTokenProvider.createToken(any())).willReturn("testToken"); // given 은 DI 된 가짜 객체의 반환값을 지정
+        BDDMockito.given(jwtTokenProvider.createToken(any(),any())).willReturn("testToken"); // given 은 DI 된 가짜 객체의 반환값을 지정
 
         // when
         String login = service.login(member.getLoginId(), member.getPassword());
@@ -51,6 +52,29 @@ public class MemberServiceTest {
         // then
         Assertions.assertThat(login).isEqualTo("testToken");
 
+    }
+
+    @Test
+    void 로그인_실패_존재하지않는회원() {
+        // given
+        BDDMockito.given(repository.findByLoginId("없는아이디"))
+                .willReturn(Optional.empty());
+
+        // then
+        assertThatThrownBy(() -> service.login("없는아이디", "1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 로그인_실패_비밀번호불일치() {
+        // given
+        Member member = new Member("kim", "3783", "2f83", "USER");
+        BDDMockito.given(repository.findByLoginId("3783"))
+                .willReturn(Optional.of(member));
+
+        // then
+        assertThatThrownBy(() -> service.login("3783", "wrongPassword"))
+                .isInstanceOf(IllegalStateException.class);
     }
 
 }

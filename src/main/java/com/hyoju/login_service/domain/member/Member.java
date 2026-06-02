@@ -17,6 +17,7 @@ public class Member {
     private String name;
     private String loginId;
     private String password;
+    private String role;
 
     // DB 의 PK값
     @Id
@@ -24,10 +25,11 @@ public class Member {
     private Long id;
 
 
-    public Member(String name, String loginId, String password) {
+    public Member(String name, String loginId, String password, String role) {
         this.name = name;
         this.loginId = loginId;
         this.password = password;
+        this.role = role;
     }
 
 

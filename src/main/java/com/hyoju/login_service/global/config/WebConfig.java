@@ -18,9 +18,10 @@ public class WebConfig implements WebMvcConfigurer { // 인터셉터를 어디�
                 .order(1)
                 .addPathPatterns("/**") // 모든 곳을 검문
                 .excludePathPatterns(
-                        "/", "/member/join", "/member/login", "/logout",
-                        "/css/**", "/*.ico", "/error"
-                        ); // 로그인이 필요 없는 길은 열어주기
-
+                        "/", "/index.html", "/join.html",  "/member/join", "/member/login", "/logout",
+                        "/css/**", "/js/**", "/images/**", "/fonts/**",
+                        "/vendor/**", "/*.ico", "/favicon.ico", "/error", "/test.html",  "/h2-console/**"  );
     }
+
+
 }
