@@ -4,14 +4,14 @@ import com.hyoju.login_service.domain.auth.JwtTokenProvider;
 import com.hyoju.login_service.domain.member.Member;
 import com.hyoju.login_service.domain.member.MemberRepository;
 import com.hyoju.login_service.web.dto.MemberInfoResponse;
-import jakarta.servlet.http.HttpServletRequest;
+// import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Map;
+// import java.util.Map;
 import java.util.Optional;
 
 @Service

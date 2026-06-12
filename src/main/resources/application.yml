@@ -13,3 +13,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
+
+jwt:
+ secret: ${JWT_SECRET}
+ expiration: 1800000

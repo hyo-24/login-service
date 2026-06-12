@@ -4,6 +4,7 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -14,8 +15,11 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private final String secretKey = "hyoju-secret-key-login-secure-79803976";
-    private final long validityInMilliseconds = 1800000;
+    @Value("${jwt.secret}")
+    private String secretKey;
+
+    @Value("${jwt.expiration}")
+    private long validityInMilliseconds;
 
     private Key key;
 
