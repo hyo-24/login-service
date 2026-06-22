@@ -31,7 +31,7 @@ public class MemberService {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
 
-        String encodedPassword = passwordEncoder.encode(password);
+        String encodedPassword = passwordEncoder.encode(password); // 비밀번호 해시화
 
         Member member = new Member(name, loginId, encodedPassword, "USER");
         memberRepository.save(member); // 이때 자동으로 PK 값이 만들어져 같이 저장됨

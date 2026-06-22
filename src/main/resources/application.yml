@@ -2,18 +2,16 @@ spring:
   application:
     name: login-service
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: jdbc:mysql://login-service-db.c6lgkimcmm92.us-east-1.rds.amazonaws.com:3306/logindb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: ${DB_PASSWORD}
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
     defer-datasource-initialization: true
 
 jwt:
- secret: ${JWT_SECRET}
- expiration: 1800000
+  secret: ${JWT_SECRET}
+  expiration: 1800000
